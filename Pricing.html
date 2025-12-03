@@ -190,7 +190,7 @@
     </section>
 
     <section class="faq" id="FAQ">
-            <div class="faq-container">
+            <div class="faq-container" style="position: sticky;">
                 <div class="faq-header">
                     <h2 class="faq-title">Frequently Asked Questions</h2>
                     <p class="faq-description">
@@ -405,6 +405,27 @@
                 }
             });
         }
+
+        // FAQ toggle functionality
+        const faqItems = document.querySelectorAll('.faq-item');
+
+        faqItems.forEach(item => {
+            const question = item.querySelector('.faq-question');
+
+            question.addEventListener('click', () => {
+                const isActive = item.classList.contains('active');
+
+                // Close all FAQ items
+                faqItems.forEach(otherItem => {
+                    otherItem.classList.remove('active');
+                });
+
+                // Open clicked item if it wasn't active
+                if (!isActive) {
+                    item.classList.add('active');
+                }
+            });
+        });
     </script>
 </body>
 
